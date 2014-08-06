@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Draft GameC</title>			
+		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">		
+		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css" media="screen">		
+
+	</head>
+	<body>
+		<div class="span11" id="draftgame">
+			<header class="body" id="header">
+				<h3 class="underline">Draft</h3>
+				<h3 class=""hidden>Standings</h3>
+				<div class="menu">
+                    <ul id="menu-primary" class="menu">
+                        <li id="menu-item-draft" class="menu-selected"><button class="draft" type="button">Draft</button></li>
+                        <li id="menu-item-standings" class="menu-unselected"><button class="standings" type="button">Standings</button></td></li>
+                    </ul>
+                </div>
+			</header>
+			<section class="span7" id="main">
+				<ul id="team-list"></ul>
+				<ul id="secondary-list"></ul>
+			</section>
+		</div>
+		<script type="text/template" id="team-template">
+			<div class="plr">
+				<h4><%- name %></h4>
+			</div>
+			<div class="power">
+			 <h6><%- power %></h6>
+			</div>
+		</script>
+		<script type="text/template" id="item-template">
+			<div class="plr">
+				<h4><%- name %></h4>
+			</div>
+		</script>
+		<script type="text/template" id="row-template">
+		     <td  width="40%" class="player"><%= name %></td>
+		     <td  width="10%" class="player"><button class="toggle" type="button"><%= actionText %></button></td>
+		     <td  width="20%" class="player-right"><%= position %> </td>
+		     <td  width="20%" class="player-right"><%= age %> years</td>
+		       <% for(var tag in tags) { %>
+		           <td class="player-right"><%= tags[tag] %></td>
+		       <% } %>	
+		       <% for(var tag in specials) { %>
+		           <td class="player-right"><b><%= specials[tag] %></b></td>
+		       <% } %>	
+		</script>
+		<script type="text/template" id="row-no-button-template">
+		     <td  width="40%" class="player"><%= name %></td>
+		     <td  width="10%" class="player"><button class="toggle-disabled" type="button"><%= actionText %></button></td>
+		     <td  width="20%" class="player-right"><%= position %> </td>
+		     <td  width="20%" class="player-right"><%= age %> years</td>
+		       <% for(var tag in tags) { %>
+		           <td class="player-right"><%= tags[tag] %></td>
+		       <% } %>	
+		       <% for(var tag in specials) { %>
+		           <td class="player-right"><b><%= specials[tag] %></b></td>
+		       <% } %>	
+		</script>		
+		<script type="text/template" id="standings-template">
+		     <td class="team"><%= name %></td>
+		       <% for(var tag in tags) { %>
+		           <td class="text-right"><%= tags[tag] %></td>
+		       <% } %>	
+		       <% for(var tag in specials) { %>
+		           <td class="text-right"><b><%= specials[tag] %></b></td>
+		       <% } %>	
+		</script>	
+		<script type="text/template" id="standings-header-template">
+		     <th  width="90px" class="link"><%= name %></th>
+		       <% for(var tag in tags) { %>
+		           <th  width="90px" class="text-right"><%= tags[tag] %></th>
+		       <% } %>	
+		       <% for(var tag in specials) { %>
+		           <th  width="90px" class="text-right"><b><%= specials[tag] %></b></th>
+		       <% } %>	
+		</script>	
+		<script type="text/template" id="table-template">
+			<div class="view">
+				<table><%- name %></table>
+			</div>
+		</script>
+		<script type="text/template" id="cell-template">
+			<div class="highlight"><%- name %></div>
+		</script>		
+		<script type="text/template" id="div">
+			<div class="view"><%- name %></div>
+		</script>
+		<script type="text/template" id="item-label">
+			<b><%- name %></b>
+		</script>
+		<script src="bower_components/todomvc-common/base.js"></script>
+		<script src="bower_components/jquery/jquery.js"></script>
+		<script src="bower_components/underscore/underscore.js"></script>
+		<script src="bower_components/backbone/backbone.js"></script>
+		<script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+		<script src='js/data/names.js'></script>
+		<script src='js/data/appConfig.js'></script>
+		<script src='js/engine/builders.js'></script>
+		<script src='js/engine/draft.js'></script>
+		<script src='js/engine/seasons.js'></script>
+		<script src='js/engine/game.js'></script>
+		<script src='js/engine/random.js'></script>
+		<script src="js/engine/player.js"></script>
+        <script src="js/engine/attributes.js"></script>
+		<script src="js/models/_player.js"></script> 	
+		<script src="js/models/freeAgents.js"></script>		
+		<script src='js/data/names.js'></script>		
+		<script src="js/models/team.js"></script>
+		<script src="js/collections/players.js"></script>
+		<script src="js/collections/teams.js"></script>
+		<script src='js/engine/ager.js'></script>
+		<script src="js/views/player-view.js"></script>		
+		<script src="js/views/teamRecord-view.js"></script>
+		<script src="js/views/team-view.js"></script>
+		<script src="js/views/freeAgents-view.js"></script>		
+		<script src="js/views/dg-app-view.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
